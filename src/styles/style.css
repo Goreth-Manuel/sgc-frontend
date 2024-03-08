@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body, html, h1, h2, label, input, p, span {
+  font-family: "Montserrat", sans-serif;
+ 
+}
+.week-meels img{
+  opacity: 1;
+  transition: opacity 3s linear;
+  animation: moveImages 3s linear infinite running;
+}
+
+@keyframes moveImages {
+  0% {
+    transform: translateX(calc(100% - 100px));
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+
+.foreground {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1;
+  }
+
