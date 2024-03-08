@@ -292,50 +292,45 @@ export const ContactoTag = styled.section`
     width: 26vw;
   }
 
-  label,
-  p {
+  .paragrafo {
     width: 40rem;
-    line-height: 2.6rem;
+    line-height: 2.4rem;
     font-size: 1.4rem;
     color: #54595f;
-    padding: 1rem 2rem 0 0;
+    padding: 1rem 2rem 1.5rem 0;
   }
 
   img {
     padding: 0 1rem;
   }
 
-  label,
-  textarea {
-    display: block;
+  div .localizacao {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
   }
 
-  textarea {
-    margin: 15px 0;
-    width: 25vw;
-    height: 20vh;
-    padding: 1rem;
+  .localizacao p {
+    width: 40rem;
+    margin-left: 25px;
+    color: #54595f;
     font-size: 1.2rem;
+    padding: 1rem 2rem 1.5rem 0;
   }
 
-  button {
-    width: 10rem;
-    background: #00aacc;
-    border-radius: 10px;
-    border: 1px solid #00aacc;
-    cursor: pointer;
-    padding: 1rem;
-    color: #fff;
-    transition: 0.8s;
-    position: relative;
-    overflow: hidden;
+  div .telefone {
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
+
+  .telefone p {
+    width: 40rem;
+    margin-left: 25px;
+    color: #54595f;
     font-size: 1.2rem;
-    font-weight: bold;
-  }
-
-  button:hover {
-    color: #000;
-    background: #6ec1e4;
-    border: 1px solid #6ec1e4;
+    padding: 1rem 2rem 1.5rem 0;
   }
 `;

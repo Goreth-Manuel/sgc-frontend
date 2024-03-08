@@ -5,7 +5,7 @@ function Rodape () {
     return (
         <RodapeTag>
             <h1>SGC - Sistema de Gestão de crianças</h1>
-            <p>All Rights Reserved © 2023</p>
+            <p>All Rights Reserved © 2024</p>
         </RodapeTag>
     )
 }
