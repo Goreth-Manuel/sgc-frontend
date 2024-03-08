@@ -1,10 +1,12 @@
 import {
   faChildren,
+  faPhone,
   faFaceSmileBeam,
   faImages,
   faSmile,
   faTrainTram,
   faUsers,
+  faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -16,6 +18,7 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Rodape from "../../components/Rodape";
 import SlideShow from "../../components/SlideShow";
+import Depoimentos from "../../components/Depoimentos"
 
 // Section Styles
 import {
@@ -293,7 +296,7 @@ function Home() {
         </section>
       </GaleriaTag>
 
-      <CardapioTag>
+      <CardapioTag id="alimentacao">
         <h1>Alimentação da semana</h1>
 
         <div className="week-meels">
@@ -396,19 +399,26 @@ function Home() {
           </div>
         </section>
       </PacoteTag>
-
+        
+      <Depoimentos />
       <ContactoTag id="contacto">
         <div id="container">
-          <div>
+          <div >
             <h1>Entre em contacto, estamos aguardando por você!</h1>
-            <p>
+            <p className="paragrafo">
               Venha conhecer o nosso Centro e nos deixe sugestões de melhorias
               das nossas actividades dentro e fora das nossas instalações.
             </p>
 
-            <label>Mensagem</label>
-            <textarea placeholder="Envie a sua menssagem" />
-            <button type="submit">Enviar</button>
+            <div className="localizacao">
+              <FontAwesomeIcon icon={faMapMarkerAlt} size="1x" color="#00aacc" /> 
+              <p> <strong>Estamos localizados junto ao<br/> Centro Feminino do Rangel</strong></p>
+            </div>
+
+            <div className="telefone"> 
+              <FontAwesomeIcon icon={faPhone} size="1x" color="#00aacc" />
+              <p> <strong>+244 928 333 368</strong></p>
+            </div>
           </div>
           <img
             src={imgs.homemNegro}

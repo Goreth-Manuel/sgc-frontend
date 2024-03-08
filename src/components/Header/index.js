@@ -26,11 +26,11 @@ function Header() {
           </li>
           {sessionStorage.getItem("user-name") && (
             <li>
-              <a href="/alimentacao">Inscrição</a>
+              <a href="#inscricao">Inscrição</a>
             </li>
           )}
           <li>
-            <a href="#contacto">Alimentação</a>
+            <a href="#alimentacao">Alimentação</a>
           </li>
           <li>
             <a href="#contacto">Contactos</a>
