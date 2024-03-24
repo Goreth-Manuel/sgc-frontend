@@ -1,6 +1,8 @@
 import React from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import { Link } from "react-router-dom";
+import { styled } from 'styled-components';
 
 const divStyle = {
   display: "flex",
@@ -61,6 +63,34 @@ const Slideshow = () => {
                   Com apenas um clique o Sistema de Gestão de crianças faz isso
                   e muito mais.
                 </p>
+
+                <ol 
+                  style={{
+                    width: '9.8rem',
+                    background: '#00AACC',
+                    borderRadius: '10px',
+                    border: '1px solid #00AACC',
+                    cursor: 'pointer',
+                    padding: '15px 25px',
+                    transition: '0.8s',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    fontSize: '1.4rem',
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    marginTop: '35px',
+                      
+                  
+                  }}>
+                  <Link to="/cadastro" style={{
+                    textDecoration: 'none',
+                    color: '#fff',
+                  }}
+                  >
+                    Cadastrar
+                  </Link>
+                  </ol>
               </div>
             </div>
           </div>

@@ -35,16 +35,18 @@ const StyledInput = styled.input`
   }
 `;
 
-let limiteTime = "2024-02-28 12:30:00";
+let limiteTime = "2024-04-28 12:30:00";
 
 function Inscricao() {
   const navigate = useNavigate();
 
-  
+  // Rota para acessar apenas com o cadastrado
   useEffect(() => {
-    /* if (!sessionStorage.getItem("user-name")) {
+    /*
+     if (!sessionStorage.getItem("user-name")) {
       navigate("/login");
-    } */
+    } 
+    */
   }, [navigate]);
 
   const SignupSchema = Yup.object().shape({
@@ -61,7 +63,7 @@ function Inscricao() {
       .max(50, "Too Long!")
       .required("Insira o nome da crianca"),
     genero: Yup.string().required("Escolhe uma opção"),
-    email: Yup.string().email("Invalid email").required("Required"),
+    email: Yup.string().email("Email inválido").required("Insira um email válido"),
     idade: Yup.date().test(
       "idade",
       "Deve estar entre 2 a 5 anos",
@@ -70,15 +72,15 @@ function Inscricao() {
         return idade >= 2 && idade <= 5;
       }
     ),
-    telefone: Yup.string().required("Required"),
+    telefone: Yup.string().required("Insira um contacto telefónico válido"),
     possuiNecessidadeEspecial: Yup.string().required("Escolhe uma opção"),
     //BIDoEncarregado: Yup.string().required("Faça o upload do BI"),
     //cedulaDeNascimentoDaCrianca: Yup.string().required("Faça o upload da cédula da criança"),
     //declaracaoTrabalho: Yup.string().required("Faça o upload da declaracao de trabalho"),
   });
 
-  const addInscricao = async (values) => {   // 1
-    try {   //2
+  const addInscricao = async (values) => {   
+    try {   
       const formdata = new FormData();
       formdata.append("nomeDoPai", values.nomeDoPai);
       formdata.append("nomeDaMae", values.nomeDaMae);
@@ -88,7 +90,7 @@ function Inscricao() {
       formdata.append("idade", values.idade);
       formdata.append(
         "descricaoDaNecessidadeEspecial",
-        values.descricaoDaNecessidadeEspecial   //3
+        values.descricaoDaNecessidadeEspecial   
       );
       formdata.append(
         "telefone",
@@ -99,41 +101,41 @@ function Inscricao() {
         values.possuiNecessidadeEspecial
       );
 
-      if (values.BIDoPai) {    // 4
-        formdata.append("BIDoPai", values.BIDoPai);   // 5
+      if (values.BIDoPai) {    
+        formdata.append("BIDoPai", values.BIDoPai);   
       }
-      if (values.BIDaMae) {     // 6
-        formdata.append("BIDaMae", values.BIDaMae);     // 7
+      if (values.BIDaMae) {     
+        formdata.append("BIDaMae", values.BIDaMae);     
       }
-      if (values.cedulaDeNascimentoDaCrianca) {    // 8
+      if (values.cedulaDeNascimentoDaCrianca) {    
         formdata.append(
           "cedulaDeNascimentoDaCrianca",
-          values.cedulaDeNascimentoDaCrianca  // 9
+          values.cedulaDeNascimentoDaCrianca  
         );
       }
-      if (values.declaracaoTrabalho) {  // 10
-        formdata.append("declaracaoTrabalho", values.declaracaoTrabalho);  // 11
+      if (values.declaracaoTrabalho) {  
+        formdata.append("declaracaoTrabalho", values.declaracaoTrabalho);  
       }
 
       await api.post("/inscricao", formdata);
 
       notify();
-      setTimeout(() => {   // 12
+      setTimeout(() => {   
         navigate("/");
       }, 4000);
-    }  // 13
+    }  
     catch (error) {
-      if (error instanceof AxiosError && error.response?.data.message) { // 14
-        notifyError(error.response?.data.message); // 15
+      if (error instanceof AxiosError && error.response?.data.message) { 
+        notifyError(error.response?.data.message); 
         //toast.error(error);
       } else {
-        notifyError(error.response?.data.message); // 16
+        notifyError(error.response?.data.message); 
       }
     }
-  }; // 17
+  }; 
 
   function notify() {
-    toast.success("Inscrição feito com sucesso");
+    toast.success("Inscrição feita com sucesso");
   }
 
   function notifyError(message) {
@@ -149,11 +151,12 @@ function Inscricao() {
         <ToastContainer position="top-center" reverseOrder={false} />
         <div id="text">
           <h1>
-            Faça a <strong>Inscrição</strong> do seu educando{" "}
+            Faça a <strong>Inscrição</strong> do seu educando 
+            preenchendo o formulário{" "}
           </h1>
           <p>
-            A inscrição deve ser feita apenas com os dados <br /> do encarregado
-            de educação.
+            A inscrição deve ser feita apenas com os dados 
+            dos encarregados de educação.
           </p>
           <div className="foreground"></div>
         </div>

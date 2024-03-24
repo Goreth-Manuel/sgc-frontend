@@ -18,11 +18,12 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Rodape from "../../components/Rodape";
 import SlideShow from "../../components/SlideShow";
+import Publicidade from "../../components/Publicidade"
 import Depoimentos from "../../components/Depoimentos"
+import CardapioAlimentar from "../../components/CardapioAlimentar"
 
 // Section Styles
 import {
-  CardapioTag,
   ContactoTag,
   DivSobre,
   EquipeTag,
@@ -226,7 +227,7 @@ function Home() {
         <h1>Galeria</h1>
 
         <section>
-          <Link to="/Galeria" style={{ textDecoration: "none" }}>
+          <Link to="/galeria" style={{ textDecoration: "none" }}>
             <div className="card">
               <FontAwesomeIcon
                 icon={faSmile}
@@ -237,7 +238,7 @@ function Home() {
             </div>
           </Link>
 
-          <Link to="/Galeria" style={{ textDecoration: "none" }}>
+          <Link to="/galeria" style={{ textDecoration: "none" }}>
             <div className="card-main">
               <FontAwesomeIcon
                 icon={faImages}
@@ -248,7 +249,7 @@ function Home() {
             </div>
           </Link>
 
-          <Link to="/Galeria" style={{ textDecoration: "none" }}>
+          <Link to="/galeria" style={{ textDecoration: "none" }}>
             <div className="card-sub">
               <FontAwesomeIcon
                 icon={faUsers}
@@ -261,7 +262,7 @@ function Home() {
         </section>
 
         <section>
-          <Link to="/Galeria" style={{ textDecoration: "none" }}>
+          <Link to="/galeria" style={{ textDecoration: "none" }}>
             <div className="card-sub">
               <FontAwesomeIcon
                 icon={faTrainTram}
@@ -272,7 +273,7 @@ function Home() {
             </div>
           </Link>
 
-          <Link to="/Galeria" style={{ textDecoration: "none" }}>
+          <Link to="/galeria" style={{ textDecoration: "none" }}>
             <div className="card">
               <FontAwesomeIcon
                 icon={faFaceSmileBeam}
@@ -283,7 +284,7 @@ function Home() {
             </div>
           </Link>
 
-          <Link to="/Galeria" style={{ textDecoration: "none" }}>
+          <Link to="/galeria" style={{ textDecoration: "none" }}>
             <div className="card-main">
               <FontAwesomeIcon
                 icon={faChildren}
@@ -296,20 +297,9 @@ function Home() {
         </section>
       </GaleriaTag>
 
-      <CardapioTag id="alimentacao">
-        <h1>Alimentação da semana</h1>
-
-        <div className="week-meels">
-          <img src={imgs.Arroz} className="img" alt="Arroz" />
-          <img src={imgs.fejoada} className="img" alt="fejoada" />
-          <img src={imgs.frango} className="img" alt="frango" />
-          <img src={imgs.funge} className="img" alt="funge" />
-          <img src={imgs.massa} className="img" alt="massa" />
-          <img src={imgs.mufete} className="img" alt="mufete" />
-          <img src={imgs.pato} className="img" alt="pato" />
-          <img src={imgs.sopa} className="img" alt="sopa" />
-        </div>
-      </CardapioTag>
+      <div id="alimentacao">
+        <CardapioAlimentar />
+      </div>
 
       <EquipeTag>
         <h1>Conheça a nossa equipe</h1>
@@ -400,7 +390,7 @@ function Home() {
         </section>
       </PacoteTag>
         
-      <Depoimentos />
+      <Publicidade />
       <ContactoTag id="contacto">
         <div id="container">
           <div >
@@ -429,6 +419,8 @@ function Home() {
           />
         </div>
       </ContactoTag>
+        
+      <Depoimentos />
       <Footer />
       <Rodape />
     </>

@@ -9,6 +9,7 @@ import Home from "./pages/home";
 import Inscricao from "./pages/Inscricao";
 import Alimentacao from "./pages/alimentacao";
 import Matricula from "./pages/Matricula";
+import Galeria from "./pages/Galeria";
 import Login from "./pages/Login";
 import { Toaster } from "react-hot-toast";
 
@@ -45,8 +46,12 @@ function AppRoutes() {
           {<Route path="/matricula/:id" element={<Matricula />} />}
           <Route path="*" element={<Navigate to="/" />} /> 
 
+          {<Route path="/galeria" element={<Galeria />} />}
+          <Route path="*" element={<Navigate to="/" />} />
+
           {<Route path="/alimentacao" element={<Alimentacao />} />}
           <Route path="*" element={<Navigate to="/" />} />
+
         </Routes>
       </BrowserRouter>
     </>

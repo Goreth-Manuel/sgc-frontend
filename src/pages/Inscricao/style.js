@@ -18,7 +18,7 @@ export const ContainerTag = styled.main`
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(1px);
     z-index: 0;
   }
@@ -29,7 +29,7 @@ export const ContainerTag = styled.main`
 
     h1 {
       color: #f1f1f1;
-      font-size: 4.5rem;
+      font-size: 3rem;
       width: 78%;
       font-family: "Montserrat";
       letter-spacing: 1.5px;
@@ -44,11 +44,11 @@ export const ContainerTag = styled.main`
 
     p {
       font-size: 2rem;
-
       margin-top: 20px;
       z-index: 1;
       color: #f2f2f2;
       line-height: 1.3;
+      width: 75%;
     }
   }
 
@@ -56,6 +56,7 @@ export const ContainerTag = styled.main`
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     min-height: 68vh;
+    min-width: 50vw;
     border-radius: 1rem;
     z-index: 1;
   }

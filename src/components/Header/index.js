@@ -26,7 +26,7 @@ function Header() {
           </li>
           {sessionStorage.getItem("user-name") && (
             <li>
-              <a href="#inscricao">Inscrição</a>
+              <a href="/inscricao">Inscrição</a>
             </li>
           )}
           <li>

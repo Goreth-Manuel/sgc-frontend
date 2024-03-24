@@ -53,10 +53,12 @@ function Cadastro() {
       sessionStorage.setItem("user-token", userData.token);
       sessionStorage.setItem("user-name", userData.newUser.nome);
 
-      notify();
       setTimeout(() => {
         navigate("/");
       }, 4000);
+
+      notify();
+      
     } catch (error) {
        if(error instanceof AxiosError && error.response?.data.message) {
         notifyError(error.response?.data.message);
