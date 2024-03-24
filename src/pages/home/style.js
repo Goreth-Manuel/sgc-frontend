@@ -160,24 +160,6 @@ export const GaleriaTag = styled.div`
   }
 `;
 
-export const CardapioTag = styled.section`
-  height: 36vh;
-  padding: 2rem 0;
-
-  h1 {
-    padding: 2rem 0;
-    text-align: center;
-    font-size: 38px;
-    color: #54595f;
-  }
-
-  img {
-    width: 254px;
-    height: 230px;
-    padding: 1rem;
-    margin: 1rem 0;
-  }
-`;
 
 export const EquipeTag = styled.section`
   height: 64vh;

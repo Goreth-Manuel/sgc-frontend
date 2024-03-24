@@ -1,12 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import { Field, Form, Formik, ErrorMessage } from "formik";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import * as Yup from "yup";
-import api from "./../../api/api";
-import { AxiosError } from "axios";
-import Button from "../../../src/components/Button";
 import Header from "../../components/Header";
 import Rodape from "../../components/Rodape";
 import * as imgs from "../../assets";
@@ -197,6 +191,16 @@ const weeks = [
 
 function Alimentacao() {
   const cardListRefs = useRef([]);
+  const navigate = useNavigate();
+
+  // Rota para acessar apenas com o cadastrado
+  useEffect(() => {
+    /*
+     if (!sessionStorage.getItem("user-name")) {
+      navigate("/login");
+    } 
+    */
+  }, [navigate]);
 
   const scrollStep = 300; // Valor de deslocamento do scroll
 

@@ -1,74 +1,172 @@
-import React from "react";
-import { Slide } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
+import React, { useRef } from "react";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import api from "./../../api/api";
+import Button from "../../../src/components/Button";
+import * as imgs from "../../assets";
+import { ContainerTag } from "./style";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import GO from "../../assets/img/GO.jpeg";
+import jacob from "../../assets/img/jacob.jpg";
+import anthony from "../../assets/img/anthony.jpg";
+import ringa from "../../assets/img/ringa.jpg";
 
-const divStyle = {
-  display: "flex",
-  alignItems: "center",
-  //paddingLeft: "216px",
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
-  height: "50vh",
-  fontSize: "25px",
-  opacity: "0.9",
-  color: "#001524",
-  width: "100%", // Adiciona esta linha para definir a largura para 50%
-  margin: "auto",
-};
+//ringa
+const weeks = [
+  {
+    week_name: "Depoimentos",
+    days: [
+      {
 
-const slideImages = [
-  {
-    url: "/imagens/image0.jpg",
-  },
-  {
-    url: "/imagens/bargain-stylish-empty-deal-coworker.jpg",
-  },
-  {
-    url: "/imagens/cubes.jpg",
+        snacks: {
+          breakfast: {
+            name: "Haneth Manuel",
+            image: ringa,
+          },
+          lunch: {
+            name: "Benvinda dos Santos",
+            image: jacob,
+            nutricional_values: ["Ferro"],
+          },
+          dinner: {
+            name: "Hamilton da Cruz",
+            image: anthony,
+            nutricional_values: ["Potácio"],
+          },
+        },
+      },
+      {
+        snacks: {
+          breakfast: {
+            name: "Haneth Manuel",
+            image: ringa,
+          },
+          lunch: {
+            name: "Benvinda dos Santos",
+            image: jacob,
+          },
+          dinner: {
+            name: "Margarida André",
+            image: GO,
+          },
+        },
+      },
+    ],
   },
 ];
 
-const Slideshow = () => {
+function Depoimento() {
+  const cardListRefs = useRef([]);
+
+  const scrollStep = 300; // Valor de deslocamento do scroll
+
+  const scrollLeft = (weekIndex) => {
+    const cardList = cardListRefs.current[weekIndex];
+    if (cardList) {
+      cardList.scrollLeft -= scrollStep;
+    }
+  };
+
+  const scrollRight = (weekIndex) => {
+    const cardList = cardListRefs.current[weekIndex];
+    if (cardList) {
+      cardList.scrollLeft += scrollStep;
+    }
+  };
+
+
   return (
-    <div className="slide-container" style={{ width: "50%" }}>
-      <Slide>
-        {slideImages.map((slideImage, index) => (
-          <div key={index}>
-            <div
-              style={{
-                ...divStyle,
-                backgroundImage: `url(${slideImage.url})`,
-                backgroundSize: "cover",
-                backgroundPosition: "50% 50%",
-              }}
-            >
-              <div>
-                <h1
-                  style={{
-                    width: "45rem",
-                    padding: "2rem 0",
-                    lineHeight: "3.5rem",
-                  }}
-                >
-                  Matricular o seu filho num centro infantil nunca foi tão
-                  fácil!{" "}
-                </h1>
-                <p
-                  style={{
-                    width: "40rem",
-                    lineHeight: "2.5rem",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Com apenas um clique o Sistema de Gestão de crianças faz isso
-                  e muito mais.
-                </p>
+    <div style={{ background: "#f1f1f1" }}>
+      <ContainerTag>
+        {weeks.map((week, index) => (
+          <section key={index}>
+            <label>
+              <h1>{week.week_name}</h1>
+            </label>
+            <div className="scroll-buttons">
+              <ChevronLeft
+                className="prev-button"
+                onClick={() => scrollLeft(index)}
+                color="#00aacc"
+                size={50}
+              />
+              <ChevronRight
+                className="next-button"
+                onClick={() => scrollRight(index)}
+                color="#00aacc"
+                size={50}
+              />
+              <div
+                className="card-list"
+                ref={(ref) => (cardListRefs.current[index] = ref)}
+              >
+                {week.days.map((day, dayIndex) => (
+                  <>
+                    <div className="card" key={`${dayIndex}-breakfast`}>
+                      <div className="picture">
+                        <img
+                          src={day.snacks.breakfast.image}
+                          alt={day.snacks.breakfast.name}
+                        />
+                      </div>
+                      <div className="content">
+                        <label className="food-name">
+                          {day.snacks.breakfast.name}
+                        </label>
+                        <div className="nutrition">
+                          <label>É o melhor Centro Infantil que eu já vi</label>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <div className="card" key={`${dayIndex}-lunch`}>
+                      <div className="picture">
+                        <img
+                          src={day.snacks.lunch.image}
+                          alt={day.snacks.lunch.name}
+                        />
+                      </div>
+                      <div className="content">
+                        <label className="food-name">
+                          {day.snacks.lunch.name}
+                        </label>
+                        <div className="nutrition">
+                          <label>Matricular o meu filho neste centro
+                            foi a melhor escolha que fiz
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="card" key={`${dayIndex}-dinner`}>
+                      <div className="picture">
+                        <img
+                          src={day.snacks.dinner.image}
+                          alt={day.snacks.dinner.name}
+                        />
+                      </div>
+                      <div className="content">
+                        <label className="food-name">
+                          {day.snacks.dinner.name}
+                        </label>
+                        <span className="week-day">{day.day_name}</span>
+                        <div className="nutrition">
+                          <label>Eu amei as actividades diárias dos nossos filhos. </label>
+                          
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </>
+                ))}
               </div>
             </div>
-          </div>
+          </section>
         ))}
-      </Slide>
+      </ContainerTag>
     </div>
   );
-};
-export default Slideshow;
+}
+
+export default Depoimento;

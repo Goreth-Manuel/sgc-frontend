@@ -9,17 +9,17 @@ import api from "../../api/api";
 import { LoginTag } from "./style";
 import { useEffect } from "react";
 //import { useAuth } from "../../core/zustand/auth";
-// 1
+
 function Login() {
-  const navigate = useNavigate(); //1
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    if(sessionStorage.getItem("user-name")){ //2
-      navigate("/");  //3
+    if(sessionStorage.getItem("user-name")){ 
+      navigate("/");  
     }
   }, [])
   
-  const ValidateSchema = Yup.object().shape({  //4
+  const ValidateSchema = Yup.object().shape({  
     email: Yup.string().email("email inválido").required("Digite o seu email"),
     senha: Yup.string()
       .min(6, "A senha deve conter pelo menos 6 caracteres") 
@@ -27,10 +27,10 @@ function Login() {
       .required("Digite a sua senha"), 
   });
 
-  const handleSubmit = async (values) => {  //5
-    try { //6
+  const handleSubmit = async (values) => {  
+    try { 
       
-      const { data: userData } = await api.post("/auth/login", { //7
+      const { data: userData } = await api.post("/auth/login", { 
         email: values.email,
         senha: values.senha
       });
@@ -44,23 +44,23 @@ function Login() {
         }, 2000);       
       } catch (error) { 
         
-      if (error instanceof AxiosError && error.response?.data.message) { // 8
-        notifyError(error.response?.data.message);  //9
+      if (error instanceof AxiosError && error.response?.data.message) { 
+        notifyError(error.response?.data.message);  
       } else {
-        notifyError(error.response?.data.message); // 10
+        notifyError(error.response?.data.message); 
       }  
     }
-  };//11
+  };
 
   function notify() {
-    toast.success("Login feito com sucesso"); //13
+    toast.success("Login feito com sucesso"); 
   }
 
-  function notifyError(message) {  // 14
+  function notifyError(message) {  
     toast.error(`${message}`);
   }
 
-  const renderError = (message) => <span className="error">{message}</span>; // 13
+  const renderError = (message) => <span className="error">{message}</span>; 
 
   return (
     <LoginTag>
